@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a href="" routerLink="/"><span>Business Matching</span></a>
+    <span class="spacer"></span>
+    <button mat-icon-button routerLink="/create">
+      <mat-icon class="header__icon" aria-hidden="true" aria-label="add"
+        >add_circle_outline</mat-icon
+      >
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
+      <mat-icon aria-hidden="true" aria-label="menu">more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/welcome">
+        <mat-icon class="icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon>
+        <span>ログイン/新規登録</span>
+      </button>
+      <button mat-menu-item routerLink="/setting">
+        <mat-icon class="icon" aria-hidden="false" aria-label="Example delete icon">settings</mat-icon>
+        <span>設定</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
