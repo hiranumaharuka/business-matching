@@ -7,6 +7,7 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
+  hide = true;
   form = this.fb.group({
     name: ['', [
       Validators.required,
@@ -16,7 +17,7 @@ export class WelcomeComponent implements OnInit {
       Validators.required,
       Validators.email
     ]],
-    pwd: ['', [Validators.required]]
+    pwd: ['', [Validators.required, Validators.minLength(8)]]
   });
 
   get nameControl() {

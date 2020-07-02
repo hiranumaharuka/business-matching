@@ -1,7 +1,7 @@
 <div class="container">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field class="name-input" appearance="legacy">
-      <mat-label>名前</mat-label>
+      <mat-label>ユーザー名</mat-label>
       <input
         formControlName="name"
         placeholder="田中たろう"
@@ -29,23 +29,22 @@
         >必須入力です</mat-error
       >
       <mat-error *ngIf="mailControl.hasError('email')"
-        >必須入力です</mat-error
+        >e-mailアドレスのフォーマットにしてください。</mat-error
       >
     </mat-form-field>
-    <mat-form-field class="name-input" appearance="legacy">
+    <mat-form-field appearance="legacy">
       <mat-label>パスワード</mat-label>
-      <input
-        formControlName="pwd"
-        placeholder="8文字以上の英数字"
-        type="text"
-        matInput
-        required
-      />
+      <input formControlName="pwd" matInput [type]="hide ? 'password' : 'text'" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error *ngIf="pwdControl.hasError('required')"
         >必須入力です</mat-error
       >
+      <mat-error *ngIf="pwdControl.hasError('minLength')"
+        >8文字以上入力してください</mat-error
+      >
     </mat-form-field>
-
     <div class="form-footer">
       <button [disabled]="form.invalid" mat-raised-button color="primary">
         登録する
