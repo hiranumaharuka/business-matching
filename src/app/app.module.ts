@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent, NotfoundComponent],
   imports: [
@@ -17,6 +19,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MatToolbarModule,
     SharedModule,
     MatMenuModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

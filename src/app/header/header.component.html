@@ -11,9 +11,13 @@
       <mat-icon aria-hidden="true" aria-label="menu">more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/welcome">
+      <button mat-menu-item routerLink="/welcome/sign-up">
         <mat-icon class="icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon>
         <span>ログイン/新規登録</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon class="icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon>
+        <span>ログアウト</span>
       </button>
       <button mat-menu-item routerLink="/setting">
         <mat-icon class="icon" aria-hidden="false" aria-label="Example delete icon">settings</mat-icon>

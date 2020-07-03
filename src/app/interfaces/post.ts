@@ -3,15 +3,14 @@ export interface Post {
   title: string;
   content: string;
   category: string;
-  createdAt: Date;
+  authorId: string;
 }
 
 export interface User {
   id: number;
-  name: string;
+  userName: string;
   mail: string;
   pwd: string;
-  createdAt: Date;
 }
 
 

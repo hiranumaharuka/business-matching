@@ -1,21 +1,5 @@
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field class="name-input" appearance="legacy">
-      <mat-label>ユーザー名</mat-label>
-      <input
-        formControlName="userName"
-        placeholder="田中たろう"
-        type="text"
-        matInput
-        required
-      />
-      <mat-error *ngIf="nameControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-      <mat-error *ngIf="nameControl.hasError('maxlength')"
-        >長過ぎます</mat-error
-      >
-    </mat-form-field>
+  <form [formGroup]="form" (ngSubmit)="login()">
     <mat-form-field class="name-input" appearance="legacy">
       <mat-label>メールアドレス</mat-label>
       <input
@@ -52,18 +36,15 @@
       <mat-error *ngIf="pwdControl.hasError('required')"
         >必須入力です</mat-error
       >
-      <mat-error *ngIf="pwdControl.hasError('minLength')"
-        >8文字以上入力してください</mat-error
-      >
     </mat-form-field>
+    <p class="error" *ngIf="invalidLogin">パスワードまたはメールアドレスが間違っています</p>
     <div class="form-footer">
       <button [disabled]="form.invalid" mat-flat-button color="primary">
-        登録する
-      </button>
-      <button type="button"  mat-button color="primary" routerLink="../login">
         ログインする
+      </button>
+      <button type="button" mat-button color="primary" routerLink="../sign-up">
+        登録する
       </button>
     </div>
   </form>
 </div>
-
