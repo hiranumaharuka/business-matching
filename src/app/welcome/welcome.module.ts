@@ -7,9 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [WelcomeComponent],
+  declarations: [WelcomeComponent, LoginComponent],
   imports: [
     CommonModule,
     WelcomeRoutingModule,
