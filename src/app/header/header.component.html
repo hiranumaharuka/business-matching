@@ -11,11 +11,13 @@
       <mat-icon aria-hidden="true" aria-label="menu">more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/welcome/sign-up">
-        <mat-icon class="icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon>
-        <span>ログイン/新規登録</span>
-      </button>
-      <button mat-menu-item (click)="logout()">
+      <ng-template #loginBtn>
+        <button mat-menu-item routerLink="/welcome/sign-up">
+          <mat-icon class="icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon>
+          <span>ログイン/新規登録</span>
+        </button>
+      </ng-template>
+      <button mat-menu-item (click)="logout()" *ngIf="isLogin; else loginBtn">
         <mat-icon class="icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon>
         <span>ログアウト</span>
       </button>

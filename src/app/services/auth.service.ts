@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { User } from '../interfaces/post';
 import { EventEmitter } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +17,7 @@ export class AuthService {
   };
   redirectUrl = '/';
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   createUser(user: User) {
     return this.http
@@ -25,21 +26,19 @@ export class AuthService {
   }
 
   public userlogin(data) {
-    console.log(data);
-    return this.http
-      .post<any>(this.url + 'login2.php', data)
-      .pipe(
-        map((Users) => {
-          this.setToken(Users[0].name);
-          this.getLoggedInName.emit(true);
-          return Users;
-        })
-      );
+    return this.http.post<any>(this.url + 'login2.php', data).pipe(
+      map((Users: User[]) => {
+        const token = String(Users[0].id);
+        this.setToken(token);
+        this.getLoggedInName.emit(true);
+        return Users;
+      })
+    );
   }
 
   // token
   setToken(token: string) {
-    console.log(token);
+    console.log('token', token);
     localStorage.setItem('token', token);
   }
 
@@ -52,9 +51,8 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    const usertoken = this.getToken();
-    console.log(usertoken);
-    if (usertoken != null) {
+    const token = this.getToken();
+    if (token != null) {
       return true;
     }
     return false;

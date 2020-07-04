@@ -14,17 +14,27 @@
         required
       ></textarea>
       <mat-error *ngIf="messageControl.hasError('required')"
-      >必須入力です</mat-error
-    >
-    <mat-error *ngIf="messageControl.hasError('maxlength')"
-      >長過ぎます</mat-error
-    >
+        >必須入力です</mat-error
+      >
+      <mat-error *ngIf="messageControl.hasError('maxlength')"
+        >長過ぎます</mat-error
+      >
     </mat-form-field>
 
     <div class="form-footer">
-      <button [disabled]="form.invalid" mat-raised-button color="primary">
+      <button
+        *ngIf="isLogin; else login"
+        [disabled]="form.invalid"
+        mat-raised-button
+        color="primary"
+      >
         応募する
       </button>
+      <ng-template #login>
+        <button type="button" mat-raised-button color="primary" routerLink="/welcome/login">
+          ログインして応募する
+        </button>
+      </ng-template>
     </div>
   </form>
 </div>
