@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { PostService } from 'src/app/services/post.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-post',
@@ -22,7 +24,12 @@ export class CreatePostComponent implements OnInit {
     return this.form.get('content') as FormControl;
   }
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private postService: PostService,
+    private snackBar: MatSnackBar
+  ) {
     authService.getLoggedInName.subscribe((name) => this.changeName(name));
     if (this.authService.isLoggedIn()) {
       this.isLogin = true;
@@ -37,7 +44,22 @@ export class CreatePostComponent implements OnInit {
     this.isLogin = name;
   }
 
-  submit() {
-    console.log('作りました');
+  create() {
+    const data = this.form.value;
+    const authorId = Number(this.authService.getToken());
+    this.postService
+      .createPost(
+        { title: data.title, content: data.content, category: data.category },
+        authorId
+      )
+      .subscribe(() => {
+        this.snackBar.open('作成しました', null, {
+          duration: 2000,
+        }),
+          // tslint:disable-next-line: no-unused-expression
+          (err) => {
+            console.log(err);
+          };
+      });
   }
 }

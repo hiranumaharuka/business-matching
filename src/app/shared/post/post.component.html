@@ -1,15 +1,15 @@
 <div class="top">
   <p class="top__title">
-    新規ビジネス立ち上げに興味ある方いらっしゃいませんか？
+    {{ post.title }}
   </p>
 </div>
 <div class="footer">
   <div class="footer__name">
-    田中たろう
+    {{ post.userName }}
   </div>
   <div class="footer__category">
     <div>
-      探しています
+      {{ post.category === 'help' ? '手伝います' : '探してます'}}
     </div>
   </div>
 </div>

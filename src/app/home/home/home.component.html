@@ -1,4 +1,6 @@
 <div class="container">
   <h2>投稿一覧</h2>
-  <app-post routerLink="/postdetail"></app-post>
+  <ng-container *ngFor="let post of posts$ | async">
+    <app-post [post]="post" [routerLink]="['post']" [queryParams]="{ id: post.postId }"></app-post>
+  </ng-container>
 </div>
