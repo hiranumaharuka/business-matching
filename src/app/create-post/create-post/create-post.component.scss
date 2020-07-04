@@ -1,5 +1,11 @@
+@import 'variables';
+@import 'mixins';
+
 mat-form-field {
-  width: 70%;
+  @include pc {
+    width: 60%;
+  }
+  width: 100%;
 }
 
 .container {

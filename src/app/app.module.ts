@@ -8,8 +8,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 @NgModule({
   declarations: [AppComponent, HeaderComponent, NotfoundComponent],
   imports: [
@@ -20,8 +25,21 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     MatMenuModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['*'],
+        blacklistedRoutes: ['http://localhost:8080/businessMatchingDB/'],
+      },
+    }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

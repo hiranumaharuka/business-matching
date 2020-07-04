@@ -7,24 +7,20 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  loginbtn: boolean;
-  logoutbtn: boolean;
+  isLogin: boolean;
 
   constructor(private authService: AuthService) {
     authService.getLoggedInName.subscribe((name) => this.changeName(name));
     if (this.authService.isLoggedIn()) {
-      this.loginbtn = false;
-      this.logoutbtn = true;
+      this.isLogin = true;
     } else {
-      this.loginbtn = true;
-      this.logoutbtn = false;
+      this.isLogin = false;
     }
   }
 
   ngOnInit() {}
   private changeName(name: boolean): void {
-    this.logoutbtn = name;
-    this.loginbtn = !name;
+    this.isLogin = name;
   }
 
   logout() {

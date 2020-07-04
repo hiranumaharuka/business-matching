@@ -25,8 +25,8 @@
         matInput
         autocomplete="off"
         cdkTextareaAutosize
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5"
+        cdkAutosizeMinRows="3"
+        cdkAutosizeMaxRows="10"
         required
       ></textarea>
       <mat-error *ngIf="contentControl.hasError('required')"
@@ -44,9 +44,14 @@
       </mat-select>
     </mat-form-field>
     <div class="form-footer">
-      <button [disabled]="form.invalid" mat-raised-button color="primary">
+      <button *ngIf="isLogin; else login" [disabled]="form.invalid" mat-raised-button color="primary">
         募集する
       </button>
+      <ng-template #login>
+        <button type="button" mat-raised-button color="primary" routerLink="/welcome/login">
+          ログインして応募する
+        </button>
+      </ng-template>
     </div>
   </form>
 </div>
