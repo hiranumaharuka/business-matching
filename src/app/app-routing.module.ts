@@ -15,8 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./create-post/create-post.module').then(m => m.CreatePostModule),
   },
   {
-    // path: ':postid',
-    path: 'postdetail',
+    path: 'post',
     loadChildren: () => import('./post-detail/post-detail.module').then(m => m.PostDetailModule),
   },
   {

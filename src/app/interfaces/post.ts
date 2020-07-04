@@ -1,5 +1,5 @@
 export interface Post {
-  id: number;
+  postId: number;
   title: string;
   content: string;
   category: string;
@@ -13,5 +13,11 @@ export interface User {
   pwd: string;
 }
 
-
+export interface PostWithAuthor  {
+  postId: number;
+  title: string;
+  content: string;
+  category: string;
+  userName: string;
+}
 
