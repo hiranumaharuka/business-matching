@@ -1,10 +1,14 @@
 <div class="center">
   <p>メッセージ</p>
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="apply(createNgForm)"
+    #createNgForm="ngForm"
+  >
     <mat-form-field appearance="outline">
       <mat-label>メッセージ</mat-label>
       <textarea
-        formControlName="message"
+        formControlName="content"
         placeholder="例：投稿されている内容に興味をもちメッセージさせていただきました。"
         matInput
         autocomplete="off"
@@ -31,7 +35,12 @@
         応募する
       </button>
       <ng-template #login>
-        <button type="button" mat-raised-button color="primary" routerLink="/welcome/login">
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          routerLink="/welcome/login"
+        >
           ログインして応募する
         </button>
       </ng-template>

@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule),
   },
   {
+    path: 'message',
+    loadChildren: () => import('./message/message.module').then(m => m.MessageModule),
+  },
+  {
     path: '**',
     component: NotfoundComponent
   }

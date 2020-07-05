@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class HeaderComponent implements OnInit {
   isLogin: boolean;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     authService.getLoggedInName.subscribe((name) => this.changeName(name));
     if (this.authService.isLoggedIn()) {
       this.isLogin = true;
@@ -25,6 +26,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.deleteToken();
-    window.location.href = window.location.href;
+    this.router.navigateByUrl('/');
   }
 }
