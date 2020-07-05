@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>メッセージ一覧</h2>
+  <ng-container *ngFor="let message of messages$ | async">
+    <app-message
+      [message]="message"
+      routerLink="./{{ message.applicationId }}"
+    ></app-message>
+  </ng-container>
+</div>

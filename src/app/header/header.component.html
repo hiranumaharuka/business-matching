@@ -21,9 +21,9 @@
         <mat-icon class="icon" aria-hidden="false" aria-label="Example heart icon">exit_to_app</mat-icon>
         <span>ログアウト</span>
       </button>
-      <button mat-menu-item routerLink="/setting">
-        <mat-icon class="icon" aria-hidden="false" aria-label="Example delete icon">settings</mat-icon>
-        <span>設定</span>
+      <button *ngIf="isLogin" mat-menu-item routerLink="/message">
+        <mat-icon class="icon" aria-hidden="false" aria-label="Example delete icon">insert_comment</mat-icon>
+        <span>メッセージ</span>
       </button>
     </mat-menu>
   </mat-toolbar-row>

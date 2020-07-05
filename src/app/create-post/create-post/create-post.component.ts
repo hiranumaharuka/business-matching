@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormBuilder } from '@angular/forms';
+import { Validators, FormControl, FormBuilder, NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -44,7 +44,7 @@ export class CreatePostComponent implements OnInit {
     this.isLogin = name;
   }
 
-  create() {
+  create(form: NgForm) {
     const data = this.form.value;
     const authorId = Number(this.authService.getToken());
     this.postService
@@ -56,6 +56,7 @@ export class CreatePostComponent implements OnInit {
         this.snackBar.open('作成しました', null, {
           duration: 2000,
         }),
+        form.resetForm(),
           // tslint:disable-next-line: no-unused-expression
           (err) => {
             console.log(err);

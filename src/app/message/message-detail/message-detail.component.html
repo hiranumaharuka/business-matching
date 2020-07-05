@@ -1,0 +1,8 @@
+<div class="container" *ngIf="message$ | async as message">
+  <div class="container__title">
+    {{ message.userName }}さんからのメッセージです
+  </div>
+  <div class="container__content">
+    {{ message.content }}
+  </div>
+</div>

@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PostWithAuthor } from 'src/app/interfaces/post';
 import { PostService } from 'src/app/services/post.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-detail',
@@ -20,8 +19,6 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.postId = Number(this.route.snapshot.queryParamMap.get('id'));
-    this.post$ = this.postService
-      .getPost(this.postId)
-      .pipe(tap((data) => console.log(data)));
+    this.post$ = this.postService.getPost(this.postId);
   }
 }

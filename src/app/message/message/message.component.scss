@@ -1,0 +1,39 @@
+.content {
+  display: flex;
+  border-bottom: 1px solid rgba(black,.2);
+  padding: 16px;
+}
+
+.avatar {
+  margin-right: 1rem;
+  flex-grow: 0;
+  &__circle {
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    font-weight: 700;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 100%;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #ff575f;
+  }
+  &__title {
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    font-weight: 700;
+    height: 2.25rem;
+    line-height: 2.25rem;
+  }
+}
+.message {
+  margin-bottom: -0.19em;
+  // margin-top: -0.19em;
+  flex-grow: 1;
+  width: 0;
+  &__username {
+    align-items: center;
+  }
+}
