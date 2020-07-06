@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/businessMatchingDB/'
+  baseUrl: 'http://localhost:8080/business-matching/api/'
 };
 
 /*
