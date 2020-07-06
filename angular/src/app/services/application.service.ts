@@ -19,6 +19,7 @@ export class ApplicationService {
       .pipe(map((res) => res));
   }
 
+
   getApplications(): Observable<ApplicationWithAuthor[]> {
     return this.http.get<ApplicationWithAuthor[]>(this.url + 'applicationlist.php');
   }
