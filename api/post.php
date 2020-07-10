@@ -18,10 +18,8 @@ $sql = "SELECT * FROM posts a INNER JOIN register b ON a.authorId=b.id WHERE `po
     $posts['content'] = $row['content'];
     $posts['category'] = $row['category'];
     $posts['userName'] = $row['username'];
-   // $cr++;
   
     
-   //print_r($students);
 
   echo json_encode($posts);
 }

@@ -17,7 +17,6 @@ if($result = mysqli_query($con,$sql))
     $cr++;
   }
     
-    //print_r($posts);
 
   echo json_encode($posts);
 }
