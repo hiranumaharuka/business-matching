@@ -33,7 +33,9 @@
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles"]
+              "includePaths": [
+                "src/styles"
+              ]
             }
           },
           "configurations": {
@@ -130,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "business-matching"
+  "defaultProject": "business-matching",
+  "cli": {
+    "analytics": false
+  }
 }
