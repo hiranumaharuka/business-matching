@@ -1,10 +1,11 @@
-import { Injectable, Output } from '@angular/core';
+import { Injectable, Output, Directive } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { User } from '../interfaces/post';
 import { EventEmitter } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+@Directive()
 @Injectable({
   providedIn: 'root',
 })
