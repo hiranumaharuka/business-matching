@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  url = environment.baseUrl;
+  url = environment.baseLocalUrl;
 
   constructor(private http: HttpClient) { }
 

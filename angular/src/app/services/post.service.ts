@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PostService {
-  url = environment.baseUrl;
+  url = environment.baseLocalUrl;
 
   constructor(private http: HttpClient) {}
 
