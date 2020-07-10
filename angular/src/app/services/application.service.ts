@@ -9,7 +9,7 @@ import { ApplicationWithAuthor, Application } from '../interfaces/application';
   providedIn: 'root',
 })
 export class ApplicationService {
-  url = environment.baseUrl;
+  url = environment.baseLocalUrl;
 
   constructor(private http: HttpClient) {}
 
