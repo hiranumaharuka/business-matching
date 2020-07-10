@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormBuilder, NgForm, FormGroupDirective } from '@angular/forms';
+import {
+  Validators,
+  FormControl,
+  FormBuilder,
+  NgForm,
+  FormGroupDirective,
+} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-post',
@@ -56,7 +63,7 @@ export class CreatePostComponent implements OnInit {
         this.snackBar.open('作成しました', null, {
           duration: 2000,
         }),
-        form.resetForm(),
+          form.resetForm(),
           // tslint:disable-next-line: no-unused-expression
           (err) => {
             console.log(err);

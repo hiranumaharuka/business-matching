@@ -3,7 +3,6 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
-import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
