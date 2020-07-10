@@ -10,7 +10,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.baseUrl;
   localUrl = environment.baseLocalUrl;
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,7 +21,7 @@ export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   createUser(user: User) {
-    return this.http.post(this.url + 'insert.php', user).pipe(
+    return this.http.post(this.localUrl + 'insert.php', user).pipe(
       map((res) => {
         this.getLoggedInName.emit(true);
       })
@@ -30,7 +29,7 @@ export class AuthService {
   }
 
   public userlogin(data) {
-    return this.http.post<any>(this.url + 'login2.php', data).pipe(
+    return this.http.post<any>(this.localUrl + 'login2.php', data).pipe(
       map((Users: User[]) => {
         const token = String(Users[0].id);
         this.setToken(token);
