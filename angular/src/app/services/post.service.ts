@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
   url = environment.baseLocalUrl;
+  apiUrl = 'https://test1-angular-heroku.herokuapp.com/';
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +21,7 @@ export class PostService {
   }
 
   getPosts(): Observable<PostWithAuthor[]> {
-    return this.http.get<PostWithAuthor[]>(this.url + 'postlist.php');
+    return this.http.get<PostWithAuthor[]>(this.apiUrl + 'postlist.php');
   }
 
   getPost(id: number): Observable<PostWithAuthor> {
