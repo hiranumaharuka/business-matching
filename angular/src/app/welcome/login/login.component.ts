@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     const formData = this.form.value;
     this.authService
       .userlogin(formData)
-      // .pipe(first())
       .subscribe(
         (data) => {
           const redirect = this.authService.redirectUrl

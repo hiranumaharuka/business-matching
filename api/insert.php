@@ -2,12 +2,9 @@
 require 'connect.php';
 
  $postdata = file_get_contents("php://input");
-// issetは変数があるかnullだとfalase
 if(isset($postdata) && !empty($postdata))
 {
   $request = json_decode($postdata);
-
-  // print_r($request);
   
   // Sanitize.
   $username = mysqli_real_escape_string($con, trim($request->userName));

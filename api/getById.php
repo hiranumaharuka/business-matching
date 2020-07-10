@@ -18,10 +18,6 @@ $sql = "SELECT * FROM register WHERE `id` ='{$id}' LIMIT 1";
     $users['content'] = $row['content'];
     $users['category'] = $row['category'];
     $users['userName'] = $row['username'];
-   // $cr++;
-
-
-   //print_r($students);
 
   echo json_encode($users);
 }
