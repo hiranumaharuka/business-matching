@@ -1,15 +1,17 @@
-import { Injectable, Output } from '@angular/core';
+import { Injectable, Output, Directive } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { User } from '../interfaces/post';
 import { EventEmitter } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   url = environment.baseUrl;
+  localUrl = environment.baseLocalUrl;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -20,9 +22,11 @@ export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   createUser(user: User) {
-    return this.http
-      .post(this.url + 'insert.php', user)
-      .pipe(map((res) => res));
+    return this.http.post(this.url + 'insert.php', user).pipe(
+      map((res) => {
+        this.getLoggedInName.emit(true);
+      })
+    );
   }
 
   public userlogin(data) {
@@ -38,7 +42,6 @@ export class AuthService {
 
   // token
   setToken(token: string) {
-    console.log('token', token);
     localStorage.setItem('token', token);
   }
 
@@ -48,6 +51,7 @@ export class AuthService {
 
   deleteToken() {
     localStorage.removeItem('token');
+    this.getLoggedInName.emit(false);
   }
 
   isLoggedIn() {

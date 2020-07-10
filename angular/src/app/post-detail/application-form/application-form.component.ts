@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, NgForm, FormGroupDirective } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApplicationService } from 'src/app/services/application.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -43,7 +43,7 @@ export class ApplicationFormComponent implements OnInit {
     this.isLogin = name;
   }
 
-  apply(form: NgForm) {
+  apply(form: FormGroupDirective) {
     const data = this.form.value;
     const authorId = Number(this.authService.getToken());
     this.applicationService
